@@ -117,18 +117,42 @@ int main() {
     
     std::srand(static_cast<unsigned>(std::time(nullptr)));
     WordEntry chosen = filtered[std::rand() % filtered.size()];
+    
+    // word creation chosen from WordEntry function and guess to hold the user entry
 	std::string word= chosen.word;
+	char guess;
+	int incorrect_inputs =0, incorrect_max=6;
+	
+	
 	string hiddenEntry(word.length(), '_');
 	char charArr[word.length() + 1];
 	strcpy(charArr, word.c_str());
+	
+	while(hiddenEntry!=word && incorrect_inputs !=incorrect_max){
+	cout<<"Word: " << hiddenEntry<<endl;
+	cout<<"Guess: ";
+	cin>>guess;
+	
 	
 	for(size_t i=0; i<word.length(); i++){
 		if(word[i]==guess){
 			hiddenEntry[i]=guess;
 		}
 	}
+	if(word.find(guess)== std::string::npos){
+		 cout<<"The letter "<<guess<< " is not in the selected word."<<endl;
+		 incorrect_inputs++;}
+	else{
+		cout<<"The letter "<<guess<<" is in the selected word"<<endl;}
+	}
+	if(hiddenEntry==word){
+		cout<<"The word was correctly guessed"<<endl;
+		return 1;}
+	else{
+		cout<<"The word was not correctly guessed"<<endl;
+		return 2;}
 	
-	cout<<"Word: " << hiddenEntry<<endl;
+	
 	
 	
 	
