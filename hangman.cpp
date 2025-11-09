@@ -40,7 +40,7 @@ vector<WordEntry> loadWords(const string& filename) {
     }
 
     string line;
-    getline(file, line); // Skip header
+    getline(file, line); 
 
     while (getline(file, line)) {
         stringstream ss(line);
@@ -154,7 +154,7 @@ int main() {
         }
 
         if (hiddenEntry == word) {
-            cout << "🎉 The word was correctly guessed!\n";
+            cout << " The word was correctly guessed!\n";
             if (mode_select == 2) {
                 time_t endTime = time(NULL);
                 int duration = static_cast<int>(difftime(endTime, startTime));
@@ -168,7 +168,8 @@ int main() {
                     lb << playerName << "," << duration << "\n";
                     lb.close();
                     cout << "Your time (" << duration << "s) was recorded!\n";
-                } else {
+                } 
+                else {
                     cerr << "Error: Could not write to leaderboard.\n";
                 }
             }
@@ -200,7 +201,7 @@ int main() {
 
         sort(scores.begin(), scores.end(), compareScores);
 
-        cout << "\n🏆 Leaderboard (Fastest Times):\n";
+        cout << "\n Leaderboard (Fastest Times):\n";
         for (size_t i = 0; i < scores.size() && i < 10; ++i) {
             cout << i + 1 << ". " << scores[i].first << " - " << scores[i].second << "s\n";
         }
