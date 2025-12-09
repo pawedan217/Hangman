@@ -5,6 +5,21 @@
 #include <vector>
 #include <utility>
 
+enum class Category {
+    Pet,
+    Place,
+    Restaurant,
+    Invalid
+};
+
+enum class Difficulty {
+    Easy,
+    Medium,
+    Hard,
+    Expert,
+    Invalid
+};
+
 struct WordEntry {
     std::string category;
     std::string word;
@@ -14,8 +29,12 @@ struct WordEntry {
 std::string trim(const std::string& str);
 std::string toLower(const std::string& s);
 
+Category toCategory(const std::string& s);
+Difficulty toDifficulty(const std::string& s);
+
 std::vector<WordEntry> loadWords(const std::string& filename);
 
-bool compareScores(const std::pair<std::string, int>& a, const std::pair<std::string, int>& b);
+bool compareScores(const std::pair<std::string, int>& a,
+    const std::pair<std::string, int>& b);
 
 #endif
